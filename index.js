@@ -13,7 +13,11 @@ app.get('/api/supermarkets', async (req, res) => {
   }
 
   try {
-    const response = await axios.get(`https://api.geoapify.com/v2/places?categories=commercial.supermarket&filter=rect:${rect}&limit=${limit}&apiKey=${process.env.API_KEY}`);
+    const url = `https://api.geoapify.com/v2/places?categories=commercial.supermarket&filter=rect:${rect}&limit=${limit}&apiKey=${process.env.API_KEY}`;
+    const response = await axios.get(url);
+
+    console.log(url);
+
     res.send(response.data);
   } catch (error) {
     console.error(error); // Log the error to the console
@@ -22,8 +26,24 @@ app.get('/api/supermarkets', async (req, res) => {
 });
 
 // Entertainment/Attractions endpoint
-app.get('/api/entertainment', (req, res) => {
-  res.send('Entertainment data goes here');
+app.get('/api/entertainment', async (req, res) => {
+  const { rect, limit } = req.query;
+
+  if (!rect || !limit) {
+    return res.status(400).send('Missing required parameters: rect and limit');
+  }
+
+  try {
+    const url = `https://api.geoapify.com/v2/places?categories=entertainment,tourism.attraction&filter=rect:${rect}&limit=${limit}&apiKey=${process.env.API_KEY}`;
+    const response = await axios.get(url);
+
+    console.log(url);
+
+    res.send(response.data);
+  } catch (error) {
+    console.error(error); // Log the error to the console
+    res.status(500).send('An error occurred while fetching entertainment data');
+  }
 });
 
 // Parks endpoint
