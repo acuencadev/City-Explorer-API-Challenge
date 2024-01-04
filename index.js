@@ -47,8 +47,24 @@ app.get('/api/entertainment', async (req, res) => {
 });
 
 // Parks endpoint
-app.get('/api/parks', (req, res) => {
-  res.send('Parks data goes here');
+app.get('/api/parks', async (req, res) => {
+  const { rect, limit } = req.query;
+
+  if (!rect || !limit) {
+    return res.status(400).send('Missing required parameters: rect and limit');
+  }
+
+  try {
+    const url = `https://api.geoapify.com/v2/places?categories=national_park&filter=rect:${rect}&limit=${limit}&apiKey=${process.env.API_KEY}`;
+    const response = await axios.get(url);
+
+    console.log(url);
+
+    res.send(response.data);
+  } catch (error) {
+    console.error(error); // Log the error to the console
+    res.status(500).send('An error occurred while fetching parks data');
+  }
 });
 
 // Restaurants endpoint
