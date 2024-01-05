@@ -4,6 +4,10 @@ require('dotenv').config();
 
 const app = express();
 
+app.use(express.json());
+
+let feedback = [];
+
 async function fetchData(category, rect, limit) {
   const url = `https://api.geoapify.com/v2/places?categories=${category}&filter=rect:${rect}&limit=${limit}&apiKey=${process.env.API_KEY}`;
   const response = await axios.get(url);
@@ -92,6 +96,15 @@ app.get('/api/restaurants', async (req, res) => {
 
 // User Feedback endpoint
 app.post('/api/feedback', (req, res) => {
+  const { email, comment } = req.body;
+
+  if (!email || !comment) {
+    return res.status(400).send('Missing required parameters: email and comment');
+  }
+
+  // Store the feedback in memory
+  feedback.push({ email, comment });
+
   res.send('Feedback received');
 });
 
