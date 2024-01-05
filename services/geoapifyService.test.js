@@ -15,18 +15,18 @@ test('fetchData returns an array of Location objects', async () => {
           formatted: 'Test Address',
           lat: 123,
           lon: 456,
-          categories: ['commercial.supermarket']
-        }
-      }
-    ]
+          categories: ['commercial.supermarket'],
+        },
+      },
+    ],
   });
 
   const data = await fetchData('commercial.supermarket', 'rect', 20);
-  
+
   expect(Array.isArray(data)).toBe(true);
-  
+
   expect(data[0]).toBeInstanceOf(Location);
-  
+
   expect(data[0].name).toBe('Test Supermarket');
   expect(data[0].address).toBe('Test Address');
   expect(data[0].lat).toBe(123);

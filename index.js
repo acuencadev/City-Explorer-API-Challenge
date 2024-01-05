@@ -15,12 +15,12 @@ const swaggerOptions = {
       description: 'API for the City Explorer app',
       contact: {
         name: 'Amador Cuenca',
-        email: 'amador.cuenca@aurea.com'
+        email: 'amador.cuenca@aurea.com',
       },
-      servers: ['http://localhost:3000']
-    }
+      servers: ['http://localhost:3000'],
+    },
   },
-  apis: ['index.js', `${__dirname}/routes/*.js`]
+  apis: ['index.js', `${__dirname}/routes/*.js`],
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
@@ -45,7 +45,9 @@ app.post('/api/feedback', (req, res) => {
   const { email, comment } = req.body;
 
   if (!email || !comment) {
-    return res.status(400).send('Missing required parameters: email and comment');
+    return res
+      .status(400)
+      .send('Missing required parameters: email and comment');
   }
 
   // Store the feedback in memory
