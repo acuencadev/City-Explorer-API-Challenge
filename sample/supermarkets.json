@@ -1,0 +1,151 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "EDEKA",
+                "country": "Germany",
+                "country_code": "de",
+                "state": "Bavaria",
+                "county": "Landkreis Donau-Ries",
+                "city": "Asbach-Bäumenheim",
+                "postcode": "86663",
+                "suburb": "Asbach",
+                "street": "Josef-Dunau-Ring",
+                "housenumber": "10",
+                "lon": 10.81881479176283,
+                "lat": 48.68573055,
+                "formatted": "EDEKA, Josef-Dunau-Ring 10, 86663 Asbach-Bäumenheim, Germany",
+                "address_line1": "EDEKA",
+                "address_line2": "Josef-Dunau-Ring 10, 86663 Asbach-Bäumenheim, Germany",
+                "categories": [
+                    "building",
+                    "building.commercial",
+                    "commercial",
+                    "commercial.supermarket",
+                    "wheelchair",
+                    "wheelchair.yes"
+                ],
+                "details": [
+                    "details",
+                    "details.building",
+                    "details.commercial",
+                    "details.contact",
+                    "details.facilities",
+                    "details.payment"
+                ],
+                "datasource": {
+                    "sourcename": "openstreetmap",
+                    "attribution": "© OpenStreetMap contributors",
+                    "license": "Open Database Licence",
+                    "url": "https://www.openstreetmap.org/copyright",
+                    "raw": {
+                        "name": "EDEKA",
+                        "shop": "supermarket",
+                        "brand": "EDEKA",
+                        "phone": "+4990629006",
+                        "osm_id": 710603924,
+                        "organic": "yes",
+                        "website": "https://www.edeka.de/eh/s%C3%BCdbayern/edeka-josef-dunau-ring-10/index.jsp",
+                        "building": "supermarket",
+                        "osm_type": "w",
+                        "stroller": "yes",
+                        "addr:city": "Asbach-Bäumenheim",
+                        "check_date": "2023-10-07",
+                        "wheelchair": "yes",
+                        "addr:street": "Josef-Dunau-Ring",
+                        "second_hand": "no",
+                        "currency:EUR": "yes",
+                        "payment:cash": "yes",
+                        "payment:visa": "yes",
+                        "addr:postcode": 86663,
+                        "opening_hours": "Mo-Sa 07:00-20:00; PH off",
+                        "payment:coins": "yes",
+                        "payment:notes": "yes",
+                        "brand:wikidata": "Q701755",
+                        "brand:wikipedia": "de:Edeka",
+                        "building:levels": 1,
+                        "internet_access": "no",
+                        "addr:housenumber": 10,
+                        "air_conditioning": "yes",
+                        "payment:girocard": "yes",
+                        "payment:contactless": "yes",
+                        "payment:credit_cards": "yes"
+                    }
+                },
+                "place_id": "51df9a66d838a325405958c61db7c5574840f00102f90194f45a2a000000009203054544454b41"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.818793070340176,
+                    48.685721292055575
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "name": "ALDI Süd",
+                "country": "Germany",
+                "country_code": "de",
+                "state": "Bavaria",
+                "county": "Landkreis Donau-Ries",
+                "city": "Donauwörth",
+                "postcode": "86609",
+                "suburb": "Riedlingen",
+                "street": "Kaiser-Karl-Straße",
+                "housenumber": "4",
+                "lon": 10.756082494692937,
+                "lat": 48.71197225,
+                "formatted": "ALDI Süd, Kaiser-Karl-Straße 4, 86609 Donauwörth, Germany",
+                "address_line1": "ALDI Süd",
+                "address_line2": "Kaiser-Karl-Straße 4, 86609 Donauwörth, Germany",
+                "categories": [
+                    "building",
+                    "building.commercial",
+                    "commercial",
+                    "commercial.supermarket",
+                    "wheelchair",
+                    "wheelchair.yes"
+                ],
+                "details": [
+                    "details",
+                    "details.facilities"
+                ],
+                "datasource": {
+                    "sourcename": "openstreetmap",
+                    "attribution": "© OpenStreetMap contributors",
+                    "license": "Open Database Licence",
+                    "url": "https://www.openstreetmap.org/copyright",
+                    "raw": {
+                        "name": "ALDI Süd",
+                        "shop": "supermarket",
+                        "brand": "ALDI Süd",
+                        "osm_id": 25660516,
+                        "building": "yes",
+                        "osm_type": "w",
+                        "addr:city": "Donauwörth",
+                        "wheelchair": "yes",
+                        "addr:street": "Kaiser-Karl-Straße",
+                        "addr:country": "DE",
+                        "addr:postcode": 86609,
+                        "opening_hours": "Mo-Sa 08:00-20:00",
+                        "brand:wikidata": "Q41171672",
+                        "brand:wikipedia": "en:Aldi",
+                        "addr:housenumber": 4
+                    }
+                },
+                "place_id": "513b0ebf1219832540596766bf43205b4840f00102f901648c870100000000920309414c44492053c3bc64"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    10.756050668546882,
+                    48.711922138649975
+                ]
+            }
+        }
+    ]
+}
