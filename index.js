@@ -1,6 +1,7 @@
-const express = require('express');
-const axios = require('axios');
 require('dotenv').config();
+
+const express = require('express');
+const placesRoutes = require('./routes/places');
 
 const app = express();
 
@@ -8,113 +9,7 @@ app.use(express.json());
 
 let feedback = [];
 
-async function fetchData(category, rect, limit) {
-  const url = `https://api.geoapify.com/v2/places?categories=${category}&filter=rect:${rect}&limit=${limit}&apiKey=${process.env.API_KEY}`;
-  const response = await axios.get(url);
-  
-  const locations = response.data.features.map(feature => {
-    const { properties } = feature;
-    const name = properties.name;
-    const address = properties.formatted;
-    const lat = properties.lat;
-    const lon = properties.lon;
-    const categories = properties.categories;
-    
-    return new Location(name, address, lat, lon, categories);
-  });
-  
-  return locations;
-}
-
-class Location {
-  constructor(name, address, lat, lon, categories) {
-    this.name = name;
-    this.address = address;
-    this.lat = lat;
-    this.lon = lon;
-    this.categories = categories;
-  }
-}
-
-// Supermarkets endpoint
-app.get('/api/supermarkets', async (req, res) => {
-  const { rect } = req.query;
-  let { limit } = req.query;
-
-  if (!rect) {
-    return res.status(400).send('Missing required parameters: rect and limit');
-  }
-
-  limit = limit || 20;
-
-  try {
-    const data = await fetchData('commercial.supermarket', rect, limit);
-    res.send(data);
-  } catch (error) {
-    console.error(error); // Log the error to the console
-    res.status(500).send('An error occurred while fetching supermarkets data');
-  }
-});
-
-// Entertainment/Attractions endpoint
-app.get('/api/entertainment', async (req, res) => {
-  const { rect } = req.query;
-  let { limit } = req.query;
-
-  if (!rect) {
-    return res.status(400).send('Missing required parameters: rect and limit');
-  }
-
-  limit = limit || 20;
-
-  try {
-    const data = await fetchData('entertainment,tourism.attraction', rect, limit);
-    res.send(data);
-  } catch (error) {
-    console.error(error); // Log the error to the console
-    res.status(500).send('An error occurred while fetching entertainment data');
-  }
-});
-
-// Parks endpoint
-app.get('/api/parks', async (req, res) => {
-  const { rect } = req.query;
-  let { limit } = req.query;
-
-  if (!rect) {
-    return res.status(400).send('Missing required parameters: rect and limit');
-  }
-
-  limit = limit || 20;
-
-  try {
-    const data = await fetchData('national_park', rect, limit);
-    res.send(data);
-  } catch (error) {
-    console.error(error); // Log the error to the console
-    res.status(500).send('An error occurred while fetching parks data');
-  }
-});
-
-// Restaurants endpoint
-app.get('/api/restaurants', async (req, res) => {
-  const { rect } = req.query;
-  let { limit } = req.query;
-
-  if (!rect) {
-    return res.status(400).send('Missing required parameters: rect and limit');
-  }
-
-  limit = limit || 20;
-
-  try {
-    const data = await fetchData('catering.restaurant', rect, limit);
-    res.send(data);
-  } catch (error) {
-    console.error(error); // Log the error to the console
-    res.status(500).send('An error occurred while fetching restaurants data');
-  }
-});
+app.use('/api', placesRoutes);
 
 // User Feedback endpoint
 app.post('/api/feedback', (req, res) => {
