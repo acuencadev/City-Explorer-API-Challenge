@@ -68,8 +68,24 @@ app.get('/api/parks', async (req, res) => {
 });
 
 // Restaurants endpoint
-app.get('/api/restaurants', (req, res) => {
-  res.send('Restaurants data goes here');
+app.get('/api/restaurants', async (req, res) => {
+  const { rect, limit } = req.query;
+
+  if (!rect || !limit) {
+    return res.status(400).send('Missing required parameters: rect and limit');
+  }
+
+  try {
+    const url = `https://api.geoapify.com/v2/places?categories=catering.restaurant&filter=rect:${rect}&limit=${limit}&apiKey=${process.env.API_KEY}`;
+    const response = await axios.get(url);
+
+    console.log(url);
+
+    res.send(response.data);
+  } catch (error) {
+    console.error(error); // Log the error to the console
+    res.status(500).send('An error occurred while fetching restaurants data');
+  }
 });
 
 // User Feedback endpoint
