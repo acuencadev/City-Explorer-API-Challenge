@@ -2,7 +2,15 @@ const express = require('express');
 const router = express.Router();
 const fetchData = require('../services/geoapifyService');
 
-// Supermarkets endpoint
+/**
+ * @swagger
+ * /api/supermarkets:
+ *  get:
+ *    description: Returns a list of supermarkets within the specified bounding box
+ *    responses:
+ *      '200':
+ *        description: A list of supermarkets within the specified bounding box
+ */
 router.get('/supermarkets', async (req, res) => {
     const { rect } = req.query;
     let { limit } = req.query;
@@ -22,7 +30,15 @@ router.get('/supermarkets', async (req, res) => {
     }
   });
   
-  // Entertainment/Attractions endpoint
+/**
+ * @swagger
+ * /api/entertainment:
+ *  get:
+ *    description: Returns a list of entertainment locations within the specified bounding box
+ *    responses:
+ *      '200':
+ *        description: A list of entertainment locations within the specified bounding box
+ */
   router.get('/entertainment', async (req, res) => {
     const { rect } = req.query;
     let { limit } = req.query;
@@ -42,7 +58,15 @@ router.get('/supermarkets', async (req, res) => {
     }
   });
   
-  // Parks endpoint
+/**
+ * @swagger
+ * /api/parks:
+ *  get:
+ *    description: Returns a list of parks within the specified bounding box
+ *    responses:
+ *      '200':
+ *        description: A list of parks within the specified bounding box
+ */
   router.get('/parks', async (req, res) => {
     const { rect } = req.query;
     let { limit } = req.query;
@@ -62,7 +86,15 @@ router.get('/supermarkets', async (req, res) => {
     }
   });
   
-  // Restaurants endpoint
+/**
+ * @swagger
+ * /api/restaurants:
+ *  get:
+ *    description: Returns a list of restaurants within the specified bounding box
+ *    responses:
+ *      '200':
+ *        description: A list of restaurants within the specified bounding box
+ */
   router.get('/restaurants', async (req, res) => {
     const { rect } = req.query;
     let { limit } = req.query;
